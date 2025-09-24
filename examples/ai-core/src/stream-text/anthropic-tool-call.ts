@@ -43,8 +43,7 @@ async function main() {
                             controller.enqueue(newChunk)
                         } else if (chunk.type === 'reasoning-end' && hasStartedThinking) {
                             controller.enqueue({
-                                type: 'reasoning-end',
-                                id: chunk.id,
+                                ...chunk,
                                 providerMetadata: {
                                     ...chunk.providerMetadata,
                                     metadata: {
