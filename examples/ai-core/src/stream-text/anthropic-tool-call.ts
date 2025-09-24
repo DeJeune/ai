@@ -46,6 +46,7 @@ async function main() {
                                 type: 'reasoning-end',
                                 id: chunk.id,
                                 providerMetadata: {
+                                    ...chunk.providerMetadata,
                                     metadata: {
                                         ...chunk.providerMetadata?.metadata,
                                         thinking_millsec: performance.now() - thinkingStartTime,
@@ -56,7 +57,8 @@ async function main() {
                             accumulatedThinkingContent = ''
                             hasStartedThinking = false
                             thinkingStartTime = 0
-                        } else {
+                        } 
+                        else {
                             controller.enqueue(chunk)
                         }
             }
